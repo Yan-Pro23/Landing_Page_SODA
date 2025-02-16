@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="images/Plan de travail 1@300x-100.jpg">
+    <title>SODA SA - Société Pour Un Développement En Afrique</title>
+    <!-- Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Variables globales avec les couleurs SODA SA */
+        :root {
+            --lime-green: #00FF00;    /* Vert Citron */
+            --dark-blue: #0B70FF;     /* Bleu demain */
+            --sky-blue: #2ADAFF;      /* Bleu céleste */
+            --brown: #855300;         /* Marron */
+            --text-color: #333;
+            --light-bg: #f5f5f5;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        /* Bandeau de développement */
+        .development-banner {
+            position: fixed;
+            top: 80px;
+            width: 100%;
+            background-color: var(--lime-green);
+            color: var(--dark-blue);
+            padding: 10px;
+            z-index: 999;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .development-banner p {
+            display: inline-block;
+            animation: scroll-left 20s linear infinite;
+        }
+
+        @keyframes scroll-left {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Header */
+        .header {
+            background-color: var(--dark-blue);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            border-radius: 5px;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .slogan {
+            font-size: 0.9rem;
+            font-style: italic;
+            color: var(--lime-green);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/api/placeholder/1200/600');
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 1rem;
+            margin-top: 120px; /* Ajustement pour le bandeau de développement */
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--lime-green);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--sky-blue);
+        }
+
+        /* Sections d'activités */
+        .activities {
+            padding: 4rem 2rem;
+            background-color: var(--light-bg);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--dark-blue);
+            font-size: 2rem;
+        }
+
+        .activity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .activity-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border-left: 4px solid var(--lime-green);
+        }
+
+        .activity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .activity-card i {
+            font-size: 2.5rem;
+            color: var(--dark-blue);
+            margin-bottom: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .activity-card:hover i {
+            color: var(--lime-green);
+        }
+
+        .activity-card h3 {
+            color: var(--dark-blue);
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin-top: 0.5rem;
+            border: 1px solid var(--sky-blue);
+            border-radius: 5px;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--dark-blue);
+        }
+
+        .btn {
+            background-color: var(--lime-green);
+            color: var(--dark-blue);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .btn:hover {
+            background-color: var(--sky-blue);
+            transform: translateY(-2px);
+        }
+
+        /* Footer avec réseaux sociaux */
+        .footer {
+            background-color: var(--dark-blue);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .social-links {
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--lime-green);
+            transform: translateY(-3px);
+        }
+
+        /* Media Queries */
+        @media screen and (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .activity-card {
+                margin-bottom: 1rem;
+            }
+
+            .social-links a {
+                font-size: 1.2rem;
+                margin: 0 0.5rem;
+            }
+
+            .development-banner {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.5rem;
+            }
+
+            .activities {
+                padding: 2rem 1rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .slogan {
+                font-size: 0.8rem;
+            }
+
+            .logo-image {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo-container">
+            <img src="images/Plan de travail 1@300x-100.jpg" alt="SODA SA Logo" class="logo-image">
+            <div class="logo-text">
+                <div class="logo">SODA SA</div>
+                <div class="slogan">Vitalisons l'Afrique !</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="development-banner">
+        <p>
+            <i class="fas fa-laptop-code"></i> 
+            Site En Cours de Développement - Disponible prochainement 
+            <i class="fas fa-tools"></i>
+        </p>
+    </div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Société Pour Un Développement En Afrique</h1>
+            <p>Vitalisez votre projet avec SODA, votre partenaire de confiance pour un développement durable en Afrique</p>
+            <a href="#contact" class="btn">Contactez-nous</a>
+        </div>
+    </section>
+
+    <section class="activities" id="activities">
+        <h2 class="section-title">Nos Secteurs d'Activité</h2>
+        <div class="activity-grid">
+            <div class="activity-card">
+                <i class="fas fa-tractor"></i>
+                <h3>Agrobusiness</h3>
+                <p>Solutions innovantes pour l'agriculture moderne et durable en Afrique.</p>
+            </div>
+
+            <div class="activity-card">
+                <i class="fas fa-hard-hat"></i>
+                <h3>Ingénierie</h3>
+                <p>Expertise en Génie Civil, Hydraulique et Génie Rural pour des projets d'envergure.</p>
+            </div>
+
+            <div class="activity-card">
+                <i class="fas fa-building"></i>
+                <h3>Promotions Immobilières</h3>
+                <p>Développement de projets immobiliers innovants et durables.</p>
+            </div>
+
+            <div class="activity-card">
+                <i class="fas fa-umbrella-beach"></i>
+                <h3>Activités Touristiques</h3>
+                <p>Promotion du tourisme africain et développement d'infrastructures touristiques.</p>
+            </div>
+
+            <div class="activity-card">
+                <i class="fas fa-globe"></i>
+                <h3>Négoce International</h3>
+                <p>Import & Export de produits et services à l'échelle internationale.</p>
+            </div>
+
+            <div class="activity-card">
+                <i class="fas fa-fish"></i>
+                <h3>Produits Halieutiques</h3>
+                <p>Transformation et commercialisation de produits de la mer.</p>
+            </div>
+
+            <div class="activity-card">
+                <i class="fas fa-users"></i>
+                <h3>Emploi Par Intérim</h3>
+                <p>Solutions RH flexibles pour tous types d'entreprises.</p>
+            </div>
+
+            <div class="activity-card">
+                <i class="fas fa-oil-well"></i>
+                <h3>Énergies Non Renouvelables</h3>
+                <p>Solutions énergétiques conventionnelles.</p>
+            </div>
+
+            <div class="activity-card">
+                <i class="fas fa-solar-panel"></i>
+                <h3>Énergies Renouvelables</h3>
+                <p>Solutions énergétiques durables et écologiques.</p>
+            </div>
+
+            <div class="activity-card">
+                <i class="fas fa-truck-plane"></i>
+                <h3>Transport</h3>
+                <p>Services de transport multimodal : terrestre, maritime, fluvial et aérien.</p>
+            </div>
+
+            <div class="activity-card">
+                <i class="fas fa-handshake"></i>
+                <h3>Prestations de Services</h3>
+                <p>Services professionnels sur mesure pour entreprises et particuliers.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2 class="section-title">Contactez-nous</h2>
+        <form class="contact-form" action="mailto:luc.barella@sasoda.com" method="post" enctype="text/plain">
+            <div class="form-group">
+                <input type="text" placeholder="Votre nom" required>
+            </div>
+            <div class="form-group">
+                <input type="email" placeholder="Votre email" required>
+            </div>
+            <div class="form-group">
+                <textarea placeholder="Votre message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn">Envoyer</button>
+        </form>
+    </section>
+
+    <footer class="footer">
+        <div class="social-links">
+            <a href="https://linkedin.com/company/sasoda" target="_blank" title="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://facebook.com/profile.php?id=61570224884191" target="_blank" title="Facebook">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://instagram.com/soda.sa.africa/" target="_blank" title="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://threads.net/@soda.sa.africa?xmt=AQGzVFT13QCzvUUkEGhT2A8R_D9npMsqdq4_J-wx6x265NY" target="_blank" title="Threads">
+                <i class="fab fa-threads"></i>
+            </a>
+            <a href="https://x.com/sasoda" target="_blank" title="X (Twitter)">
+                <i class="fab fa-x-twitter"></i>
+            </a>
+            <a href="https://snapchat.com/add/sasoda" target="_blank" title="Snapchat">
+                <i class="fab fa-snapchat"></i>
+            </a>
+            <a href="https://twitch.tv/sasoda" target="_blank" title="Twitch">
+                <i class="fab fa-twitch"></i>
+            </a>
+            <a href="https://youtube.com/@sasoda" target="_blank" title="YouTube">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://tiktok.com/@sasoda" target="_blank" title="TikTok">
+                <i class="fab fa-tiktok"></i>
+            </a>
+        </div>
+        <p>&copy; 2025 SODA SA - Société Pour Un Développement En Afrique. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
